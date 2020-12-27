@@ -1,2 +1,2 @@
 #!/bin/sh
-./dev.sh run --rm laravel ./artisan $@
+./dev.sh exec laravel ./artisan $@
