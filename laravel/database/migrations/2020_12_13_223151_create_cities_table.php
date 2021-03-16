@@ -17,6 +17,7 @@ class CreateCitiesTable extends Migration
         Schema::create($this->cities, function (Blueprint $table) {
             $table->id();
             $table->parent('都道府県ID', 'prefectures');
+            $table->string('city_code', 5);
             $table->string('city_name', 20)->comment('市区町村名');
             $table->string('city_kana', 50)->comment('市区町村カナ');
             $table->string('city_roma', 50)->comment('市区町村ローマ字');

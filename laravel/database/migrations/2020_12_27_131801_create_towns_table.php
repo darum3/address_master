@@ -17,11 +17,10 @@ class CreateTownsTable extends Migration
     {
         Schema::create($this->towns, function (Blueprint $table) {
             $table->id();
+            $table->char('town_code', 12)->comment('町丁目コード');
             $table->parent('都道府県ID', 'prefectures');
             $table->parent('市区町村ID', 'cities');
             $table->string('town_name', 20)->comment('大字町丁目名');
-            $table->string('town_kana', 50)->comment('大字町丁目カナ');
-            $table->string('town_roma', 50)->comment('大字町丁目ローマ字');
             $table->commonColumn(true, "有効フラグ. falseで消滅");
         });
     }

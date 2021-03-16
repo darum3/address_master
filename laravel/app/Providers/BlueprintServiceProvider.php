@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class BlueprintServiceProvider extends ServiceProvider
 {
@@ -33,7 +34,7 @@ class BlueprintServiceProvider extends ServiceProvider
             $this->string('sysinfo', 64);
         });
         Blueprint::macro('parent', function(string $comment, string $table, string $column = 'id') {
-            $myColumn = "{$table}_{$column}";
+            $myColumn = Str::singular($table) . "_{$column}";
             $this->unsignedBigInteger($myColumn)->comment($comment);
             $this->foreign($myColumn)->references($column)->on($table);
         });
