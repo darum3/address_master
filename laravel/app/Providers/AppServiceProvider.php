@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Testing\Assert;
+use Illuminate\Testing\TestResponse;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (config('env') !== 'production') {
+            TestResponse::macro('assertStatusCode', function (int $statusCode = 200) {
+                $actual = $this->getStatusCode();
+
+                $dumpStatus = [500, 422];
+                if (in_array($actual, $dumpStatus)) {
+                    $this->dump();
+                }
+                Assert::assertSame(
+                    $actual,
+                    $statusCode,
+                    "Expected status code {$statusCode} but received {$actual}."
+                );
+
+                return $this;
+            });
+        }
     }
 
     /**
