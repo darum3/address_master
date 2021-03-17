@@ -1,0 +1,8 @@
+version: '2'
+
+syncs:
+  src:
+    src: './laravel'
+    # sync_strategy: 'unison'
+  # dev_front_syncs:
+  #   src: './laravel_front'
