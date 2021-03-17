@@ -30,7 +30,7 @@ webのコンテナに接続できるようにしている。
         cp .env.example .env
         cd ..
         ```
-    * `docker-compose run --rm artisan key:generate`
+    * `docker-compose run --rm laravel ./artisan key:generate`
     * 起動の確認
         * `docker-compose up -d`
         * `docker-compose ps` で、web, laravelのコンテナがupになっている
