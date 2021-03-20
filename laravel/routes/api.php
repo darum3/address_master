@@ -26,3 +26,4 @@ Route::get('/cities/{prefcetureCode}', [CityController::class, 'list'])
     ->where('prefectureCode', '[0-9][0-9]');
 Route::get('/towns/{cityCode}', [TownController::class, 'list'])
     ->where('cityCode', '[0-9]{5}');
+Route::get('/town', [TownController::class, 'getInfo']);
