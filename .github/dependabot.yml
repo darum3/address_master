@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/laravel"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: fakerphp/faker
+    versions:
+    - 1.13.0
+  - dependency-name: phpunit/phpunit
+    versions:
+    - 9.5.3
+  - dependency-name: nunomaduro/collision
+    versions:
+    - 5.3.0
